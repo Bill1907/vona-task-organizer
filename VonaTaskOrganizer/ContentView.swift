@@ -8,12 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var viewModel = TaskViewModel()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Today's Tasks").font(.title)
+            
+            List(viewModel.tasks) { task in
+                HStack {
+                    Text(task.title)
+                    Spacer()
+                    Text(task.priority == .high ? "🔥" : (task.priority == .low ? "🥱" : "🙂"))
+                }
+            }
+            
+            Button("Add Sample Task") {
+                viewModel.addTask(title: "New Task", dueDate: Date())
+            }
         }
         .padding()
     }
@@ -22,3 +33,4 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
