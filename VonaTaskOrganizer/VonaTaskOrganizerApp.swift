@@ -13,5 +13,6 @@ struct VonaTaskOrganizerApp: App {
         WindowGroup {
             ContentView()
         }
+        .defaultSize(width: 1024, height: 768)
     }
 }

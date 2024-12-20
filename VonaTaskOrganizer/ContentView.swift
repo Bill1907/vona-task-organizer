@@ -7,28 +7,44 @@
 
 import SwiftUI
 
+enum ViewSection: Hashable {
+    case dashboard
+    case today
+}
+
 struct ContentView: View {
     @StateObject var viewModel = TaskViewModel()
-    
+    @State private var selectedSection: ViewSection? = .dashboard
+
     var body: some View {
-        VStack {
-            Text("Today's Tasks").font(.title)
-            
-            List(viewModel.tasks) { task in
-                HStack {
-                    Text(task.title)
-                    Spacer()
-                    Text(task.priority == .high ? "🔥" : (task.priority == .low ? "🥱" : "🙂"))
+        NavigationSplitView {
+            List(selection: $selectedSection) {
+                Section("Menu") {
+                    NavigationLink(value: ViewSection.dashboard) {
+                        Label("Dashboard", systemImage: "calendar")
+                    }
+                    NavigationLink(value: ViewSection.today) {
+                        Label("Today's Tasks", systemImage: "square.and.pencil")
+                    }
                 }
             }
-            
-            Button("Add Sample Task") {
-                viewModel.addTask(title: "New Task", dueDate: Date())
+            .listStyle(SidebarListStyle())
+            .navigationTitle("VonaTaskOrganizer")
+        } detail: {
+            switch selectedSection {
+            case .dashboard:
+                DashboardView(viewModel: viewModel)
+            case .today:
+                TodayTasksView(viewModel: viewModel)
+            case .none:
+                Text("Select an item")
+                    .font(.title2)
+                    .foregroundColor(.secondary)
             }
         }
-        .padding()
     }
 }
+
 
 #Preview {
     ContentView()

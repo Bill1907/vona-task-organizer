@@ -7,7 +7,7 @@ class TaskViewModel: ObservableObject {
     init() {
         tasks = [
             TaskItem(title: "Buy groceries", dueDate: Date(), priority: .high, tags: ["Home"]),
-            TaskItem(title: "Check emails", dueDate: Date(), priority: .medium, tags: ["Work"]),
+            TaskItem(title: "Check emails", dueDate: Date(), isCompleted: false, priority: .medium, tags: ["Work"] ),
             TaskItem(title: "Exercise", dueDate: Date().addingTimeInterval(3600*24), priority: .low, tags: ["Health"])
         ]
     }
