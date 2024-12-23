@@ -1,5 +1,5 @@
-import { ThemeToggle } from "./theme-toggle"
-import Link from "next/link"
+import { ThemeToggle } from "./theme-toggle";
+import Link from "next/link";
 
 export function Header() {
   return (
@@ -7,7 +7,7 @@ export function Header() {
       <div className="container flex h-14 items-center m-auto">
         <div className="mr-4 flex">
           <Link className="mr-6 flex items-center space-x-2" href="/">
-            <span className="font-bold">My App</span>
+            <span className="font-bold">Vona Task Organizer</span>
           </Link>
         </div>
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
@@ -17,5 +17,5 @@ export function Header() {
         </div>
       </div>
     </header>
-  )
-} 
+  );
+}
