@@ -1,5 +1,5 @@
 import ReactMarkdown from "react-markdown";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 type Props = {
   task: {
