@@ -20,7 +20,7 @@ export function TaskInput() {
     const data = await response.json();
 
     const { type, text } = data.content[0];
-
+    console.log(type, text);
     addTask({ type, text });
     setLoading(false);
   };
