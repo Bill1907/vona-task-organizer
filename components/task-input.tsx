@@ -5,7 +5,7 @@ import { Textarea } from "./ui/textarea";
 import { useTaskStore } from "@/store/useTaskStore";
 
 export function TaskInput() {
-  const { addTask, setLoading, setError } = useTaskStore();
+  const { addTask, setLoading } = useTaskStore();
   const [task, setTask] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
